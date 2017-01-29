@@ -1,0 +1,19 @@
+{
+  "name": "ndx-auth",
+  "version": "0.0.1",
+  "description": "authorization endpoints for ndx-framework",
+  "main": "build/app.js",
+  "scripts": {
+    "test": "node build/test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ndxbxrme/ndx-auth.git"
+  },
+  "author": "ndxbxrme",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ndxbxrme/ndx-auth/issues"
+  },
+  "homepage": "https://github.com/ndxbxrme/ndx-auth"
+}
