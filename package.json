@@ -1,6 +1,6 @@
 {
   "name": "ndx-auth",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "authorization endpoints for ndx-framework",
   "main": "build/app.js",
   "scripts": {
@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/ndxbxrme/ndx-auth/issues"
   },
-  "homepage": "https://github.com/ndxbxrme/ndx-auth"
+  "homepage": "https://github.com/ndxbxrme/ndx-auth",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-coffee": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "load-grunt-tasks": "^3.5.2"
+  }
 }
