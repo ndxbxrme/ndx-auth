@@ -21,5 +21,4 @@ module.exports = (ndx) ->
       res.json
         accessToken: token
     else
-      res.json
-        error: 'Not authorized'
+      throw ndx.UNAUTHORIZED

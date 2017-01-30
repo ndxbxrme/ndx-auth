@@ -1,6 +1,6 @@
 {
   "name": "ndx-auth",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "authorization endpoints for ndx-framework",
   "main": "build/app.js",
   "scripts": {
