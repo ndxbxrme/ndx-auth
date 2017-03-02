@@ -14,10 +14,15 @@ require 'ndx-server'
 .use 'ndx-user-roles'
 .use 'ndx-auth'
 .use 'ndx-superadmin'
+.controller (ndx) ->
+  ndx.app.get '/api/protected', ndx.authenticate('superadmin'), (req, res, next) ->
+    res.json res.user
 .start()
 ```
 `connector.coffee`
 ```coffeescript
+$scope.username = 'superadmin@admin.com'
+$scope.password = 'admin'
 user = "#{$scope.username}:#{$scope.password}"
 $http.defaults.headers.common['Authorization'] = 'Basic ' + base64.encode(user)
 $http.post 'http://localhost:2323/auth/token'
