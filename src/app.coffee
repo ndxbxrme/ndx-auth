@@ -13,12 +13,14 @@ module.exports = (ndx) ->
           .toString 'utf8'
           cparts = decrypted.split ':'
           if cparts.length is 2
-            users = ndx.database.select ndx.settings.USER_TABLE, 
-              local:
-                email: cparts[0]
-            if users and users.length
-              if ndx.validPassword cparts[1], users[0].local.password
-                token = ndx.generateToken users[0]._id, req.ip
+            ndx.database.select ndx.settings.USER_TABLE, 
+              where:
+                local:
+                  email: cparts[0]
+            , (users) ->
+              if users and users.length
+                if ndx.validPassword cparts[1], users[0].local.password
+                  token = ndx.generateToken users[0]._id, req.ip
     if token
       res.json
         accessToken: token

@@ -25,12 +25,12 @@ $scope.username = 'superadmin@admin.com'
 $scope.password = 'admin'
 user = "#{$scope.username}:#{$scope.password}"
 $http.defaults.headers.common['Authorization'] = 'Basic ' + base64.encode(user)
-$http.post 'http://localhost:2323/auth/token'
+$http.post 'http://localhost:3000/auth/token'
 .then (response) ->
   if response.data and response.data.accessToken
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.accessToken
     #all api calls will now be authenticated
-    $http.get 'http://localhost:2323/api/protected'
+    $http.get 'http://localhost:3000/api/protected'
     .then (response) ->
       console.log response.data
 ```
