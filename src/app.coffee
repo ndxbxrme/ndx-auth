@@ -27,3 +27,24 @@ module.exports = (ndx) ->
         accessToken: token
     else
       throw ndx.UNAUTHORIZED
+  ndx.app.post '/api/generate_cors_token', ndx.authenticate('superadmin'), (req, res, next) ->
+    newUser =
+      email: req.body.name
+      displayName: req.body.name
+      local:
+        email: req.body.name
+        password: ''
+    newUser[ndx.settings.AUTO_ID] = ndx.generateID()
+    ndx.database.insert ndx.settings.USER_TABLE, newUser, null, true
+    res.json
+      token: ndx.generateToken newUser[ndx.settings.AUTO_ID], '', req.body.hours, true
+  ndx.app.post '/api/revoke_cors_token', ndx.authenticate('superadmin'), (req, res, next) ->
+    where = {}
+    if req.body.name
+      where.name = req.body.name
+    if req.body.id
+      where[ndx.settings.AUTO_ID] = req.body.id
+    if req.body.token
+      where[ndx.settings.AUTO_ID] = ndx.parseToken req.body.token
+    ndx.database.delete ndx.settings.USER_TABLE, where
+    res.end 'OK'
