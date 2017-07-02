@@ -32,7 +32,7 @@ module.exports = (ndx) ->
         expires: new Date(new Date().setHours(new Date().getHours() + expiresHours))
     else
       throw ndx.UNAUTHORIZED
-  ndx.app.get '/auth/refresh', (req, res) ->
+  ndx.app.post '/auth/refresh', (req, res) ->
     userId = ndx.parseToken req.body.token
     if userId.indexOf('REFRESH') is 0
       userId = userId.replace(/^REFRESH/, '')
