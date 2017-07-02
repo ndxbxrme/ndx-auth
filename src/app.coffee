@@ -23,7 +23,7 @@ module.exports = (ndx) ->
               if users and users.length
                 if ndx.validPassword cparts[1], users[0].local.password
                   token = ndx.generateToken users[0][ndx.settings.AUTO_ID], req.ip, expiresHours
-                  refreshToken = "REFRESH#{ndx.generateToken users[0][ndx.settings.AUTO_ID]}", req.ip, expiresHours
+                  refreshToken = ndx.generateToken "REFRESH#{users[0][ndx.settings.AUTO_ID]}", req.ip, expiresHours
             , true
     if token
       res.json
