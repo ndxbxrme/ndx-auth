@@ -33,7 +33,7 @@ module.exports = (ndx) ->
     else
       throw ndx.UNAUTHORIZED
   ndx.app.post '/auth/refresh', (req, res) ->
-    userId = ndx.parseToken req.body.token
+    userId = ndx.parseToken req.body.refreshToken or req.body.token
     if userId.indexOf('REFRESH') is 0
       userId = userId.replace(/^REFRESH/, '')
       res.json
