@@ -61,6 +61,5 @@ module.exports = (ndx) ->
       where[ndx.settings.AUTO_ID] = req.body.id
     if req.body.token
       where[ndx.settings.AUTO_ID] = ndx.parseToken req.body.token
-    console.log 'where', where
     ndx.database.delete ndx.settings.USER_TABLE, where
     res.end 'OK'
